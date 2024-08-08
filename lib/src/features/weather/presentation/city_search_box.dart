@@ -52,7 +52,7 @@ class _CitySearchRowState extends ConsumerState<CitySearchBox> {
                   ),
                 ),
                 onSubmitted: (value) =>
-                    ref.read(cityProvider.notifier).state = value,
+                    ref.read(cityProvider.notifier).setCity(value),
               ),
             ),
             InkWell(
@@ -73,7 +73,8 @@ class _CitySearchRowState extends ConsumerState<CitySearchBox> {
               ),
               onTap: () {
                 FocusScope.of(context).unfocus();
-                ref.read(cityProvider.notifier).state = _searchController.text;
+                ref.read(cityProvider.notifier).state = _searchController
+                    .text; // setCity() 함수를 써도 되고, 이렇게 직접 state를 변경해줘도 무관
               },
             )
           ],
